@@ -8,9 +8,13 @@ require_once("{$mainPosition}\\vendor\autoload.php");
 
 use Bootstrap\Env;
 use App\FrameworkTools\ProcessServerElements;
+use App\FrameworkTools\Implementations\FactoryMethods\FactoryProcessServerElement;
+
 
 Env::execute();
 
+$factoryProcessServerElement = new FactoryProcessServerElement();
+$factoryProcessServerElement->operantion();
 
 $processServerElements = ProcessServerElements::start();
-dd($processServerElements); 
+dd($processServerElements);
