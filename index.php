@@ -10,11 +10,10 @@ use Bootstrap\Env;
 use App\FrameworkTools\ProcessServerElements;
 use App\FrameworkTools\Implementations\FactoryMethods\FactoryProcessServerElement;
 
-
 Env::execute();
 
 $factoryProcessServerElement = new FactoryProcessServerElement();
-$factoryProcessServerElement->operantion();
+$factoryProcessServerElement->operation();
 
-$processServerElements = ProcessServerElements::start();
-dd($processServerElements);
+// $processServerElements = ProcessServerElements::start();
+// dd($processServerElements);

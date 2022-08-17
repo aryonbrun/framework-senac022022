@@ -40,4 +40,28 @@ class ProcessServerElements{
     public function getServerName(){
         return $this->serverName;
     }
+
+    public function sethttpHost($httpHost){
+        $this->httpHost = $httpHost;
+    }
+
+    public function gethttpHost(){
+        return $this->httpHost;
+    }
+
+    public function setUri($uri){
+        $this->uri  = $uri;
+    }
+
+    public function getUri(){
+        return $this->uri;
+    }
+
+    public function setVariable($variable){
+        $this->variables = $variables;
+    }
+
+    public function getVariable(){
+        return $this->variables;
+    }
 }
