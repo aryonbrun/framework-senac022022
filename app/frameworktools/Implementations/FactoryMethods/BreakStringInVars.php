@@ -20,6 +20,7 @@ trait BreakStringInVars {
 
 
         //função callback
+        
         $varsOfUrl = array_map(function($element) {
             return explode ("=", $element);
         }, $arrayWithVars);
