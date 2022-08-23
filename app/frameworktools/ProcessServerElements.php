@@ -1,12 +1,12 @@
 <?php
 
-namespace APP\FrameworkTools;
+namespace App\FrameworkTools;
+
 class ProcessServerElements{
     private static $instance;
 
     private $documentRoot;
     private $serverName;
-
     private $httpHost;
     private $uri;
     private $variables;

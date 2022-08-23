@@ -9,26 +9,20 @@ use App\Controllers\HelloWorldControllers;
 class RouteProcess {
 
     public static function execute() {
-       $processServerElements = ProcessServerElements::start();
-
+        $processServerElements = ProcessServerElements::start();
+        $routeArray = [];
         
+    
+        switch ($processServerElements->getVerb()){
+            case 'GET':
 
-       $getRoutes = [
-            '/hello-world' => (new HelloWorldControllers)->execute()
-        ];
+                switch ($processServerElements->getRoute()) {
 
-       $postRoutes = [ 
-        
-        ];
-        
-        $putRoutes = [
+                    case '/hello-world';
+                        return (new helloWorldControllers)->execute();
+                    break;
+                }
+        }
 
-        ];
-
-        $deleteRoutes = [
-
-        ];
-
-        dd($processServerElements, $getRoutes); //verificar se esta chegando
     }
 }

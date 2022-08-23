@@ -2,11 +2,12 @@
 
     namespace App\FrameworkTools\Implementations\FactoryMethods;
 
-     use App\FrameworkTools\ProcessServerElements;
+    use App\FrameworkTools\Abstracts\FactoryMethods\AbstractFactoryMethods;
+    use App\FrameworkTools\ProcessServerElements;
 
     use App\FrameworkTools\Implementations\FactoryMethods\breakStringInVars;
 
-    class FactoryProcessServerElement  {
+    class FactoryProcessServerElement  extends AbstractFactoryMethods {
 
         use BreakStringInVars;
 

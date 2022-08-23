@@ -15,16 +15,22 @@ trait BreakStringInVars {
         }
 
         $stringWithvars = $urlAndVars[1];
-
         $arrayWithVars = explode("&",$stringWithvars);
 
-
         //função callback
-        
-        $varsOfUrl = array_map(function($element) {
-            return explode ("=", $element);
+        return array_map(function($element){
+            $nameAndValue = explode ("=", $element); //pasando metodo como arhgumento em outro metodo
+            return[
+                "name" => $nameAndValue[0],
+                "value" => $nameAndValue[1]
+            ];
         }, $arrayWithVars);
+        
+        
+    //     $varsOfUrl = array_map(function($element) {
+    //         return explode ("=", $element);
+    //     }, $arrayWithVars);
 
-        DD($varsOfUrl);
+    //     DD($varsOfUrl);
     }
 }
