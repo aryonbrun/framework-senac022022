@@ -2,15 +2,19 @@
 
 namespace app\FrameworkTools\implements\Route;
 
+use App\FrameworkTools\ProcessServerElements;
+use App\Controllers\HelloWorldControllers;
+
+
 class RouteProcess {
 
     public static function execute() {
        $processServerElements = ProcessServerElements::start();
 
-       dd($processServerElements);  
+        
 
        $getRoutes = [
-
+            '/hello-world' => (new HelloWorldControllers)->execute()
         ];
 
        $postRoutes = [ 
@@ -25,6 +29,6 @@ class RouteProcess {
 
         ];
 
-        dd($processServerElements);
+        dd($processServerElements, $getRoutes); //verificar se esta chegando
     }
 }
