@@ -26,6 +26,7 @@ trait BreakStringInVars {
             ];
         }, $arrayWithVars);
         
+        dd($varsOfUrl);
         
     //     $varsOfUrl = array_map(function($element) {
     //         return explode ("=", $element);

@@ -31,7 +31,7 @@
             $this->processServerElements->setRoute(explode($_SERVER[REQUEST_URI])[0]);
 
             //$this->breakStringInVars($_SERVER['REQUEST_URI']);
-            dd($this->processServerElements);
+            //dd($this->processServerElements);
 
             
         }
