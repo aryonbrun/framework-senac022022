@@ -1,12 +1,9 @@
 <?php
 
-namespace app\FrameworkTools\implements\Route;
+namespace app\FrameworkTools\Implementations\Route;
 
-use App\FrameworkTools\ProcessServerElements;
-use App\Controllers\HelloWorldControllers;
+use app\FrameworkTools\ProcessServerElements;
 use App\Controllers\HelloWorldController;
-use App\Controllers\TrainingQueryController;
-use App\Controllers\TrainingPostController;
 use App\Controllers\InsertDataController;
 use App\Controllers\ProjectTasksController;
 
@@ -51,9 +48,14 @@ class RouteProcess {
                         return (new ProjectTasksController)->getSellerById();
                     break;
 
-                    case '/retporna-vendedor-nome':
+                    case '/retorna-vendedor-nome':
                         return (new ProjectTasksControler)->getSellerByName();
                     break;
+
+                    case '/retorna-vendas-nome':
+                        return (new ProjectTasksController)->getSellByName();  
+                    break;                 
+            
 
                     case '/retorna-vendas-nome':
                         return(new ProjectTasksController)->getBuyers();

@@ -14,9 +14,9 @@ class ProjectTasksController extends AbstractControllers {
         $databaseConnection = DatabaseConnection::start()->getPDO();
         $reqCar = $databaseConnection
             ->query("SELECT * FROM car;")   
-                ->fectAll();
+                ->fetchAll();
         
-            view(reqCar);
+            view($reqCar);
     }
 
     //RETORNANDO ITENS PELA ID
@@ -115,11 +115,31 @@ class ProjectTasksController extends AbstractControllers {
 
         $databaseConnection = DatabaseConnection::start()->getPDO();
 
-        $reqSell = @databaseConnection
+        $reqSell = $databaseConnection
             ->query("SELECT * FROM car WHERE car.id_CAR IN (SELECT sells.id_car FROM sells WHERE seller.name = 
                     (SELECT seller.id_seller FROM seller WHERE  seller.name = '{$valueOfVariable}))")
                 ->fetchAll();
     }
+
+       // retorna todos os carros vendidos por nameSeller 
+       public function getSellByName(){
+        $requestsVariables = $this->processServerElements->getVariables();
+        $valueOfVariable;
+        
+        foreach ($requestsVariables as $value) {
+                $valueOfVariable = $value["value"];
+        }
+
+        $databaseConnection = DatabaseConnection::start()->getPDO();
+
+        $reqSell = $databaseConnection
+            ->query("SELECT * FROM car WHERE car.id_car IN (SELECT sells.id_car FROM sells WHERE sells.id_seller = 
+                   (SELECT seller.id_seller FROM seller WHERE seller.name = '{$valueOfVariable}'));")
+                ->fetchAll();
+
+        view($reqSell);
+    }
+
 
     // RETORNA TODOS OS USUARIOS - COMPRADORES -
     public function getBuyers(){

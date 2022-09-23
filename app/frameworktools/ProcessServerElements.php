@@ -32,7 +32,7 @@ class ProcessServerElements{
     }
 
     public function getRoute(){
-        return this->$route;
+        return $this->route;
     }    
 
     public function setDocumentRoot($documentRoot){
@@ -76,10 +76,10 @@ class ProcessServerElements{
     }
 
     public function getVerb(){
-        return $this->$verb;
+        return $this->verb;
     }
 
     public function setVerb($verb){
-        $this->$verb = $verb;
+        $this->verb = $verb;
     }
 }

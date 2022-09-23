@@ -2,19 +2,20 @@
 
     namespace App\FrameworkTools\Implementations\FactoryMethods;
 
-    use App\FrameworkTools\Abstracts\FactoryMethods\AbstractFactoryMethods;
     use App\FrameworkTools\ProcessServerElements;
+    
+    use App\FrameworkTools\Implementations\FactoryMethods\BreakStringInVars;
 
-    use App\FrameworkTools\Implementations\FactoryMethods\breakStringInVars;
+    use App\FrameworkTools\Abstracts\FactoryMethods\AbstractFactoryMethods;
 
-    class FactoryProcessServerElement  extends AbstractFactoryMethods {
+    class FactoryProcessServerElements extends AbstractFactoryMethods {
 
         use BreakStringInVars;
 
         private $processServerElements;
 
         public function __construct(){
-            $this->processServerElements = ProcessServerElements::start(); // :: para acessar atributo/método static
+            $this->processServerElements = ProcessServerElements::start(); 
         }   
 
         public function operation(){
@@ -23,12 +24,11 @@
             $this->processServerElements->sethttpHost($_SERVER['HTTP_HOST']);
             $this->processServerElements->setUri($_SERVER['REQUEST_URI']);
 
-
             $variables = $this->breakStringInVars($_SERVER['REQUEST_URI']);
 
             $this->processServerElements->setVariables($variables);
             $this->processServerElements->setVerb($_SERVER["REQUEST_METHOD"]);
-            $this->processServerElements->setRoute(explode($_SERVER[REQUEST_URI])[0]);
+            $this->processServerElements->setRoute(explode("?",$_SERVER['REQUEST_URI'])[0]);
 
             //$this->breakStringInVars($_SERVER['REQUEST_URI']);
             //dd($this->processServerElements);

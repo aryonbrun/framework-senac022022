@@ -10,13 +10,13 @@ Class InsertDataController extends AbstractControllers{
 
         $pdo = DatabaseConnection::start()->getPDO();
     
-        @params = $this->processServerElements->getINputJSONDATA();
+        $params = $this->processServerElements->getINputJSONDATA();
 
         $query = "INSERT INTO user (name, last_name, age) VALUES (:name, :last_name, :age)";
 
         $statement->execute([
             // PARAMETROS CRIADO
-            ':name' =$params["name"],
+            ':name' =>$params["name"],
             ':last_name' => $paramns["lastname"],
             ':age' => $params["age"]
         ]);

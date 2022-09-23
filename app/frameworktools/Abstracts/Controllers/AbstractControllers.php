@@ -9,7 +9,7 @@ abstract class AbstractControllers {
     protected $processServerElements;
 
     public function __construct() {
-        $typeofAPI = env('TYPE_API')
+        $typeofAPI = env('TYPE_API');
         header("Content-Type: application/$typeofAPI"); // sempre colocoar aspas dupla quando contatenar com a variavel
 
         $this->processServerElements = ProcessServerElements::start();
