@@ -1,11 +1,13 @@
 <?php
 
-namespace app\FrameworkTools\Implementations\Route;
+namespace App\FrameworkTools\Implementations\Route;
 
-use app\FrameworkTools\ProcessServerElements;
+use App\FrameworkTools\ProcessServerElements;
 use App\Controllers\HelloWorldController;
+use App\Controllers\PostCarsController;
 use App\Controllers\InsertDataController;
 use App\Controllers\ProjectTasksController;
+use App\Controllers\GetCarsController;
 
 class RouteProcess {
 
@@ -72,7 +74,9 @@ class RouteProcess {
                     case '/retorna-carros-comprador-nome':
                         return (new ProjectTasksController)->getCarsByBuyerName();
                     break;
-            
+                        
+                    case '/trabalho-get-cars':
+                        return (new GetCarsController)->execute();
                 }
 
                 // NESSE CASO REVISAR E FAZER A ROUTA QUE VAI LIGAR O TRAININGPOSTCONTROLLER
@@ -84,8 +88,12 @@ class RouteProcess {
                         return (new TrainingPostController)-> execute();
                     break;
 
-                    case '/inset-post':
+                    case '/insert-post':
                         return (new InsertDataController)-> execute();
+                    break;
+
+                    case '/carinsert':
+                        return (new PostCarsController)->execute();
                     break;
                 }
 

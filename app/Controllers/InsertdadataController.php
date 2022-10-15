@@ -6,6 +6,7 @@ use App\FrameworkTools\Abstract\Controllers\AbstractControllers;
 use App\FrameworkTools\Database\DatabaseConnection;
 
 Class InsertDataController extends AbstractControllers{
+    
     public function execute() {
 
         $pdo = DatabaseConnection::start()->getPDO();

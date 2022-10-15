@@ -19,6 +19,10 @@ class ProcessServerElements{
         
     }
 
+    public function getInputJSONData(){ 
+        return (array) json_decode(file_get_contents('php://input'), TRUE);
+    }
+
     public static function start(){
         if(!ProcessServerElements::$instance){ // :: é para acessar atributo static
             ProcessServerElements::$instance = new ProcessServerElements();
