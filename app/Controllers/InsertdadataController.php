@@ -25,7 +25,7 @@ Class InsertDataController extends AbstractControllers{
 
         view([
 
-            'sucess'=> true
+            'success'=> true
 
         ]);
     

@@ -96,7 +96,14 @@ class RouteProcess {
                         return (new PostCarsController)->execute();
                     break;
                 }
+            
+            case 'PUT':
 
+                switch($processServerElements->getRoute()){
+                    case '/update-data':
+                        return view(['test' => true]);
+                    break;
+                }
         }
 
     }

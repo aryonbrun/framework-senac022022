@@ -12,7 +12,7 @@ private $attrName; //guarda o nome do campo que esta faltando
     public function execute(){
         try{
             
-            $response = ['sucess' =>true]; 
+            $response = ['success' =>true]; 
             //pegando a requsicao do post
             $this->params = $this->processServerElements->getInputJSONData();
 
@@ -63,12 +63,12 @@ private $attrName; //guarda o nome do campo que esta faltando
         }  
        
 
-        // //carro Zero ou Seminovo
-        // if(!$this->params['car_year_model'] > date('Y')){
-        //     $this->attrName = 'car_year';
-        //     throw new \Exception('ERROR: MIssing Name o request.');
+         //carro Zero ou Seminovo
+         if(!$this->params['car_year'] > date('Y')){
+             $this->attrName = 'car_year';
+             throw new \Exception('Ano do carro maior que o atual.');
         
-        // }
+         }
     }
 
 }
