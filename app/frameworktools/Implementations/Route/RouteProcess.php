@@ -3,108 +3,35 @@
 namespace App\FrameworkTools\Implementations\Route;
 
 use App\FrameworkTools\ProcessServerElements;
-use App\Controllers\HelloWorldController;
-use App\Controllers\PostCarsController;
-use App\Controllers\InsertDataController;
-use App\Controllers\ProjectTasksController;
-use App\Controllers\GetCarsController;
 
-class RouteProcess {
+use App\FrameworkTools\Implementations\Route\Get;
+use App\FrameworkTools\Implementations\Route\Post;
+use App\FrameworkTools\Implementations\Route\Put;
+use App\FrameworkTools\Implementations\Route\Delete;
 
-    // CRIANDO UMA ROTA E EXECUTANDO
-    public static function execute() {
-        $processServerElements = ProcessServerElements::start();
+class RouteProcess{
+
+    use Get;
+    use Post;
+    use Put;
+    //use Delete;
+
+    private static $processServerElements;
+
+    public static function execute(){
+        self::$processServerElements = ProcessServerElements::start();
         $routeArray = [];
-        
-    
-        switch ($processServerElements->getVerb()){
+       
+        switch(self::$processServerElements->getVerb()){
+
             case 'GET':
-
-                switch ($processServerElements->getRoute()) {
-
-                    case '/hello-world';
-                        return (new helloWorldControllers)->execute();
-                    break;
-
-                    case'/traning-query':
-                        return (new TraningQueryController)->execute();
-                    break;
-
-                    case '/retorna-carros':
-                        return (new ProjectTasksController)->getCar();
-                    break;
-
-                    case '/returna-carro-id':
-                        return (new ProjectTaskSController)->getCarById();
-                    break;
-
-                    case '/retorna-carros-nome':
-                        return( new ProjectTasksController)->getCarByName();
-                    break;
-
-                    case'/retorna-vendedor':
-                        return (new ProjectTasksController)->getSellers();
-                    break;
-
-                    case'/retorna-vendedor-id':
-                        return (new ProjectTasksController)->getSellerById();
-                    break;
-
-                    case '/retorna-vendedor-nome':
-                        return (new ProjectTasksControler)->getSellerByName();
-                    break;
-
-                    case '/retorna-vendas-nome':
-                        return (new ProjectTasksController)->getSellByName();  
-                    break;                 
-            
-
-                    case '/retorna-vendas-nome':
-                        return(new ProjectTasksController)->getBuyers();
-                    break;
-
-                    case '/retorna-compradores-id':
-                        return (new ProjectTasksController)->getBuyersById();
-                    break;
-
-                    case '/retorna-comprador-nome':
-                        return (new ProjectTasksController)->getBuyersByName();
-                    break;
-
-                    case '/retorna-carros-comprador-nome':
-                        return (new ProjectTasksController)->getCarsByBuyerName();
-                    break;
-                        
-                    case '/trabalho-get-cars':
-                        return (new GetCarsController)->execute();
-                }
-
-                // NESSE CASO REVISAR E FAZER A ROUTA QUE VAI LIGAR O TRAININGPOSTCONTROLLER
-                // FAZER DE MODO DIFERENTE
+                return self::get();
             case 'POST':
-                
-                switch($processServerElements->getRoute()){
-                    case '/first-post':
-                        return (new TrainingPostController)-> execute();
-                    break;
-
-                    case '/insert-post':
-                        return (new InsertDataController)-> execute();
-                    break;
-
-                    case '/carinsert':
-                        return (new PostCarsController)->execute();
-                    break;
-                }
-            
+                return self::post();
             case 'PUT':
-
-                switch($processServerElements->getRoute()){
-                    case '/update-data':
-                        return view(['test' => true]);
-                    break;
-                }
+                return self::put();
+            case 'DELETE':
+                return self::delete();
         }
-
-    }
+    }    
 }
