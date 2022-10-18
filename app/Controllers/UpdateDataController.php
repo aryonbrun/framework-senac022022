@@ -15,11 +15,28 @@ class updateDataController extends AbstractControllers {
         
         try {
         
-             $requestVariable = $this->processServerElements->getVariable();
+            $requestVariable = $this->processServerElements->getVariable();
 
-            if (sizeof($requestVariable) === 0) {
+            if ((!$requestVariables) || (sizeof($resquestVariables)) === 0) {
+                $missingAttribute = 'userIdIsNull';
                 throw new Execption ("You Need to inform userid variable");
             }
+
+            foreach ($requestVariables as $requestVariable) {
+                if ($requestVariable ['name'] == 'userId') {
+                    $userId = $rquestVariable['value'];
+                }
+            }
+
+            if (!$userId) {
+                $missingAttribute = 'userIdIsNull';
+                throw new \Exception ("You need to informe userId variable");
+            }
+            //se nao criar o pdo ; ja criado no abstract controller
+            $users = $this->pdo->quert("SELEC * FROM user WHERE id_user = '{$userId}';")
+                    ->fetchAll();
+            dd($users);
+
         } catch (\Throwabel $th) {
             $response = [
                 'success' => false,
