@@ -18,7 +18,7 @@ class updateDataController extends AbstractControllers {
             $requestVariable = $this->processServerElements->getVariable();
 
             if ((!$requestVariables) || (sizeof($resquestVariables)) === 0) {
-                $missingAttribute = 'userIdIsNull';
+                $missingAttribute = 'variableisEmpty';
                 throw new Execption ("You Need to inform userid variable");
             }
 
